@@ -34,8 +34,15 @@ def main():
     m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
     m.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
     texture = glutils.load_texture('grass.jpg')
-    o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    viewer.add_object(o)
+    VAO = m.load_to_gpu()
+    o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
+    o1.transformation.translation.x = 25
+    viewer.add_object(o1)
+    o2 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
+    o2.transformation.translation.z = 25
+    viewer.add_object(o2)
+    o3 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
+    viewer.add_object(o3)
 
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
