@@ -41,6 +41,10 @@ def main():
     o2 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     o2.transformation.translation.z = 25
     viewer.add_object(o2)
+    o4 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
+    o4.transformation.translation.x = 25
+    viewer.add_object(o4)
+    o4.transformation.translation.z = 25
     o3 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o3)
 
