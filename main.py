@@ -23,8 +23,9 @@ def main():
     tr.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr.translation.z = -5
     tr.rotation_center.z = 0.2
-    texture = glutils.load_texture('alien_text.jpg')
+    texture = glutils.load_texture('stegosaurus.jpg')
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
+    o.transformation.translation.y = 1
     viewer.add_object(o)
 
     m = Mesh()
