@@ -4,10 +4,8 @@
 out vec4 color;
 
 //Un Fragment Shader minimaliste
-uniform vec4 colorchange;
 void main (void)
 {
   //Couleur du fragment
-  color = colorchange;
+  color = vec4(1.0,0.0,0.0,1.0);
 }
-
