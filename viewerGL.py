@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import OpenGL.GL as GL
 import glfw
 import pyrr
