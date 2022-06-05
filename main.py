@@ -49,7 +49,11 @@ def main():
     o4.transformation.translation.z = 25
     o3 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o3)
+#===================== Création du batiment du musée ===================================
 
+
+
+#=======================================================================================
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
     o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
