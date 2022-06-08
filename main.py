@@ -17,14 +17,14 @@ def main():
     program3d_id = glutils.create_program_from_file('shader.vert', 'shader.frag')
     programGUI_id = glutils.create_program_from_file('gui.vert', 'gui.frag')
 
-    m = Mesh.load_obj('stegosaurus.obj')
+    m = Mesh.load_obj('textured_output.obj')
     m.normalize()
     m.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
     tr = Transformation3D()
     tr.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr.translation.z = -5
     tr.rotation_center.z = 0.2
-    texture = glutils.load_texture('stegosaurus.jpg')
+    texture = glutils.load_texture('textured_output.jpg')
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
     o.transformation.translation.y = 1
     viewer.add_object(o)
@@ -66,11 +66,11 @@ def main():
     (1.0, 1.0, 1.0),(-1.0, 1.0,-1.0),(-1.0, 1.0, 1.0),
     (1.0, 1.0, 1.0),(-1.0, 1.0, 1.0),(1.0,-1.0, 1.0)),np.float32)
 
-    # attribution d'une liste d'etat (1 indique la cr ´ eation d'une seule liste) ´
+    # attribution d'une liste d'etat (1 indique la création d'une seule liste) ´
     vao = GL.glGenVertexArrays(1)
     # affectation de la liste d'etat courante ´
     GL.glBindVertexArray(vao)
-    # attribution d’un buffer de donnees (1 indique la cr ´ eation d’un seul buffer) ´
+    # attribution d’un buffer de donnees (1 indique la création d’un seul buffer) ´
     vbo = GL.glGenBuffers(1)
     # affectation du buffer courant
     GL.glBindBuffer(GL.GL_ARRAY_BUFFER, vbo)
@@ -85,9 +85,8 @@ def main():
     # est utilise pour les positions des sommets ´
     GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, None)
 
-
     GL.glDrawArrays(GL.GL_TRIANGLES, 0, 12*3)
-#=======================================================================================
+
 
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
