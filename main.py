@@ -86,7 +86,7 @@ def main():
     GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, None)
 
 
-    GL.glDrawArrays(GL.GL_TRIANGLES, 0, 36)
+    GL.glDrawArrays(GL.GL_TRIANGLES, 0, 12*3)
 #=======================================================================================
 
     vao = Text.initalize_geometry()
