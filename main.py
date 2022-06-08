@@ -85,11 +85,9 @@ def main():
     # est utilise pour les positions des sommets ´
     GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, None)
 
+    GL.glDrawArrays(GL.GL_TRIANGLES, 0, 12*3)
 
-    GL.glDrawArrays(GL.GL_TRIANGLES, 0, 36)
-    
-    
-#=======================================================================================
+    #==================================================================================
 
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
