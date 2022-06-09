@@ -174,7 +174,15 @@ def main():
     viewer.add_object(o9)
 
 #============================= Barrières =======================================
-
+    m7 = Mesh.load_obj('ressources/objets/cube.obj')
+    m7.normalize()
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    vao7 = m7.load_to_gpu()
+    tr10 = Transformation3D()
+    tr10.translation.z= 5
+    tr10.translation.y = +1
+    o10 = Object3D(vao7, m7.get_nb_triangles(), program3d_id, texture, tr10)
+    viewer.add_object(o10)
 
 
 #===============================================================================   
