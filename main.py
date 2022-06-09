@@ -84,7 +84,7 @@ def main():
     trs.translation.y = 0
     trs.translation.z = -10
     trs.rotation_center.z = 0.2
-    texture = glutils.load_texture('ressources/textures/or.jpg')
+    texture = glutils.load_texture('ressources/textures/BaseColor.png')
     os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
     os.transformation.translation.y = 2
     viewer.add_object(os)
