@@ -38,7 +38,7 @@ def main():
     tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr21.translation.z = -10
     tr21.rotation_center.z = 0.2
-    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/grass.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     o21.transformation.translation.y = 2
     viewer.add_object(o21)
@@ -78,7 +78,7 @@ def main():
     #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
-    m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 1, 1, 1]))
+    m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 20, 1, 1]))
     texture2 = glutils.load_texture('ressources/textures/mur.jpg')
     vao2 = m2.load_to_gpu()
     for val in range(30):
