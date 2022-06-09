@@ -34,7 +34,8 @@ def main():
     m2.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
     tr2 = Transformation3D()
     tr2.translation.y = -np.amin(m.vertices, axis=0)[1]
-    tr2.translation.z = -5
+    tr2.translation.z = -25
+    tr2.translation.x = -25
     tr2.rotation_center.z = 0.2
     texture2 = glutils.load_texture('cube.jpg')
     o2 = Object3D(m2.load_to_gpu(), m2.get_nb_triangles(), program3d_id, texture2, tr2)
