@@ -29,6 +29,8 @@ def main():
     o.transformation.translation.y = 2
     viewer.add_object(o)
 
+#================================ Cube mur ========================================
+
     m2 = Mesh.load_obj('cube.obj')
     m2.normalize()
     m2.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
@@ -42,7 +44,7 @@ def main():
     o2.transformation.translation.y = 2
     viewer.add_object(o2)
     
-
+#==================================================================================
     
     
     
