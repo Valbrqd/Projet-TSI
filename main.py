@@ -42,7 +42,7 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     o21.transformation.translation.y = 2
     viewer.add_object(o21)
-#================================= Textes ========================================
+#================================= Toit ========================================
     m = Mesh()
     p0, p1, p2, p3 = [-50, 0, -50], [50, 0, -50], [50, 0, 50], [-50, 0, 50]
     n, c = [0, 1, 0], [1, 1, 1]
@@ -55,7 +55,7 @@ def main():
     tr6.translation.y = 28
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, tr6)
     viewer.add_object(o1)
-    
+#================================= Sol ========================================   
     m5 = Mesh()
     p05, p15, p25, p35 = [-50, 0, -50], [50, 0, -50], [50, 0, 50], [-50, 0, 50]
     n5, c5 = [0, 1, 0], [1, 1, 1]
@@ -66,7 +66,7 @@ def main():
     VAO = m5.load_to_gpu()
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o1)
-
+#================================= Textes =========================================
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('ressources/textures/fontB.jpg')
     o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
