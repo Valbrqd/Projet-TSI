@@ -129,7 +129,7 @@ def main():
         o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
         viewer.add_object(o5)
     
-#========== un seul bloc par côté pour remplir jusqu'au plafond (donc 4 blocs) ==============
+    #========= Bloc haut mur (donc 4 blocs) ========
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
     m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
@@ -176,41 +176,6 @@ def main():
     viewer.add_object(o9)
     
 #==================================================================================
-    
-    
-    
-    
-    
-    
-    
-    #création mur
-    # mur2 = Mesh()
-    # p01, p11, p21, p31 = [-25, 0, -25], [25, 0, -25], [-25, 25, -25], [25, 25, -25]
-    # n1, c1 = [0, 0, 1], [1, 1, 1]
-    # t01, t11, t21, t31 = [0, 0], [1, 0], [1, 1], [0, 1]
-    # mur2.vertices = np.array([[p01 + n1 + c1 + t01], [p11 + n1 + c1 + t11], [p21 + n1 + c1 + t21], [p31 + n1 + c1 + t31]], np.float32)
-    # mur2.faces = np.array([[0, 1, 2], [1, 2, 3]], np.uint32)
-    # texture = glutils.load_texture('grass.jpg')
-    # o2 = Object3D(mur2.load_to_gpu(), mur2.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    # viewer.add_object(o2)
-    
-    # mur3 = Mesh()
-    # p02, p12, p22, p32 = [25, 0, -25], [25, 0, -5], [25, 25, -25], [25, 25, 25]
-    # n2, c2 = [1, 0, 0], [1, 1, 1]
-    # t02, t12, t22, t32 = [0, 0], [1, 0], [1, 1], [0, 1]
-    # mur3.vertices = np.array([[p02 + n2 + c2 + t02], [p12 + n2 + c2 + t12], [p22 + n2 + c2 + t22], [p32 + n2 + c2 + t32]], np.float32)
-    # mur3.faces = np.array([[0, 1, 2], [1, 2, 3]], np.uint32)
-    # texture = glutils.load_texture('grass.jpg')
-    # o3 = Object3D(mur3.load_to_gpu(), mur3.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    # viewer.add_object(o3)
-    
-
-#===================== Création du batiment du musée ===================================
-
-    
-#=======================================================================================
-
-    
 
     viewer.run()
 
