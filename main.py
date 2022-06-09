@@ -17,28 +17,28 @@ def main():
     program3d_id = glutils.create_program_from_file('shader.vert', 'shader.frag')
     programGUI_id = glutils.create_program_from_file('gui.vert', 'gui.frag')
 
-    m = Mesh.load_obj('textured_output.obj')
+    m = Mesh.load_obj('ressources/objets/textured_output.obj')
     m.normalize()
     m.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
     tr = Transformation3D()
     tr.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr.translation.z = -5
     tr.rotation_center.z = 0.2
-    texture = glutils.load_texture('textured_output.jpg')
+    texture = glutils.load_texture('ressources/textures/textured_output.jpg')
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
     o.transformation.translation.y = 2
     viewer.add_object(o)
     
     
 #================================== SINGE Suzanne ===============================
-    m21 = Mesh.load_obj('singe.obj')
+    m21 = Mesh.load_obj('ressources/objets/singe.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
     tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr21.translation.z = -10
     tr21.rotation_center.z = 0.2
-    texture = glutils.load_texture('blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     o21.transformation.translation.y = 2
     viewer.add_object(o21)
@@ -49,7 +49,7 @@ def main():
     t0, t1, t2, t3 = [0, 0], [1, 0], [1, 1], [0, 1]
     m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
     m.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
-    texture = glutils.load_texture('blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     VAO = m.load_to_gpu()
     tr6 = Transformation3D()
     tr6.translation.y = 28
@@ -62,22 +62,23 @@ def main():
     t05, t15, t25, t35 = [0, 0], [1, 0], [1, 1], [0, 1]
     m5.vertices = np.array([[p05 + n5 + c5 + t05], [p15 + n5 + c5 + t15], [p25 + n5 + c5 + t25], [p35 + n5 + c5 + t35]], np.float32)
     m5.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
-    texture = glutils.load_texture('grass.jpg')
+    texture = glutils.load_texture('ressources/textures/grass.jpg')
     VAO = m5.load_to_gpu()
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o1)
 
     vao = Text.initalize_geometry()
-    texture = glutils.load_texture('fontB.jpg')
+    texture = glutils.load_texture('ressources/textures/fontB.jpg')
     o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
     viewer.add_object(o)
     o = Text('', np.array([-0.5, -0.2], np.float32), np.array([0.5, 0.3], np.float32), vao, 2, programGUI_id, texture)
     viewer.add_object(o)
 #================================ Cube mur ========================================
 
-    m2 = Mesh.load_obj('cube.obj')
+    m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
-    texture2 = glutils.load_texture('cube.jpg')
+    m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 20, 1, 1]))
+    texture2 = glutils.load_texture('ressources/textures/mur.jpg')
     vao2 = m2.load_to_gpu()
     for val in range(30):
         tr2 = Transformation3D()
