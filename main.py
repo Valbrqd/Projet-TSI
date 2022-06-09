@@ -14,8 +14,8 @@ def main():
     viewer.cam.transformation.translation.y = 2
     viewer.cam.transformation.rotation_center = viewer.cam.transformation.translation.copy()
 
-    program3d_id = glutils.create_program_from_file('shader.vert', 'shader.frag')
-    programGUI_id = glutils.create_program_from_file('gui.vert', 'gui.frag')
+    program3d_id = glutils.create_program_from_file('ressources/shaders/shader.vert', 'ressources/shaders/shader.frag')
+    programGUI_id = glutils.create_program_from_file('ressources/shaders/gui.vert', 'ressources/shaders/gui.frag')
 
     m = Mesh.load_obj('ressources/objets/textured_output.obj')
     m.normalize()
