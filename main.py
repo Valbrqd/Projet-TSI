@@ -35,10 +35,10 @@ def main():
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
+    tr21.translation.y = 50
     tr21.translation.z = -10
     tr21.rotation_center.z = 0.2
-    texture = glutils.load_texture('ressources/textures/grass.jpg')
+    texture = glutils.load_texture('ressources/textures/or.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     o21.transformation.translation.y = 2
     viewer.add_object(o21)
@@ -95,7 +95,7 @@ def main():
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
     m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 1, 1, 1]))
-    texture2 = glutils.load_texture('ressources/textures/mur.jpg')
+    texture2 = glutils.load_texture('ressources/textures/noir.jpg')
     vao2 = m2.load_to_gpu()
     for val in range(30):
         tr2 = Transformation3D()
@@ -133,7 +133,7 @@ def main():
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
     m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
-    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao3 = m3.load_to_gpu()
     tr6 = Transformation3D()
     tr6.translation.x = -30
@@ -144,7 +144,7 @@ def main():
     m4 = Mesh.load_obj('ressources/objets/cube.obj')
     m4.normalize()
     m4.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
-    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao4 = m4.load_to_gpu()
     tr7 = Transformation3D()
     tr7.translation.x = 30
@@ -156,7 +156,7 @@ def main():
     m5 = Mesh.load_obj('ressources/objets/cube.obj')
     m5.normalize()
     m5.apply_matrix(pyrr.matrix44.create_from_scale([30, 30,0.9, 1]))
-    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao5 = m5.load_to_gpu()
     tr8 = Transformation3D()
     tr8.translation.z = -30
@@ -167,7 +167,7 @@ def main():
     m6 = Mesh.load_obj('ressources/objets/cube.obj')
     m6.normalize()
     m6.apply_matrix(pyrr.matrix44.create_from_scale([30, 30, 0.9, 1]))
-    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao6 = m6.load_to_gpu()
     tr9 = Transformation3D()
     tr9.translation.z= 30
