@@ -33,23 +33,46 @@ def main():
 
     m2 = Mesh.load_obj('cube.obj')
     m2.normalize()
-    m2.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
-    tr2 = Transformation3D()
-    tr2.translation.y = -np.amin(m.vertices, axis=0)[1]
-    tr2.translation.z = -25
-    tr2.translation.x = -25
-    tr2.rotation_center.z = 0.2
     texture2 = glutils.load_texture('cube.jpg')
-    o2 = Object3D(m2.load_to_gpu(), m2.get_nb_triangles(), program3d_id, texture2, tr2)
-    o2.transformation.translation.y = 2
-    viewer.add_object(o2)
+    vao2 = m2.load_to_gpu()
+    for val in range(50):
+        tr2 = Transformation3D()
+        tr2.translation.y = -np.amin(m2.vertices, axis = 0)[1]
+        tr2.translation.z = -50
+        tr2.translation.x = -50+2*val
+        o2 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr2)
+        viewer.add_object(o2)
     
+    for val in range(50):
+        tr3 = Transformation3D()
+        tr3.translation.y = -np.amin(m2.vertices, axis = 0)[1]
+        tr3.translation.x = -50
+        tr3.translation.z = -50+2*val
+        o3 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr3)
+        viewer.add_object(o3)
+    
+    for val in range(50):
+        tr4 = Transformation3D()
+        tr4.translation.y = -np.amin(m2.vertices, axis = 0)[1]
+        tr4.translation.z = 50
+        tr4.translation.x = -50+2*val
+        o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
+        viewer.add_object(o4)
+        
+        
+    for val in range(50):
+        tr5 = Transformation3D()
+        tr5.translation.y = -np.amin(m2.vertices, axis = 0)[1]
+        tr5.translation.X = 50
+        tr5.translation.Z = -50+2*val
+        o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
+        viewer.add_object(o5)
 #==================================================================================
     
     
     
     m = Mesh()
-    p0, p1, p2, p3 = [-25, 0, -25], [25, 0, -25], [25, 0, 25], [-25, 0, 25]
+    p0, p1, p2, p3 = [-50, 0, -50], [50, 0, -50], [50, 0, 50], [-50, 0, 50]
     n, c = [0, 1, 0], [1, 1, 1]
     t0, t1, t2, t3 = [0, 0], [1, 0], [1, 1], [0, 1]
     m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
@@ -57,17 +80,8 @@ def main():
     texture = glutils.load_texture('grass.jpg')
     VAO = m.load_to_gpu()
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    o1.transformation.translation.x = 25
     viewer.add_object(o1)
-    o2 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    o2.transformation.translation.z = 25
-    viewer.add_object(o2)
-    o4 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    o4.transformation.translation.x = 25
-    viewer.add_object(o4)
-    o4.transformation.translation.z = 25
-    o3 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
-    viewer.add_object(o3)
+    
     
     
     #création mur
