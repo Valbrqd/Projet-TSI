@@ -64,7 +64,7 @@ def main():
     t05, t15, t25, t35 = [0, 0], [1, 0], [1, 1], [0, 1]
     m5.vertices = np.array([[p05 + n5 + c5 + t05], [p15 + n5 + c5 + t15], [p25 + n5 + c5 + t25], [p35 + n5 + c5 + t35]], np.float32)
     m5.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
-    texture = glutils.load_texture('ressources/textures/grass.jpg')
+    texture = glutils.load_texture('ressources/textures/sol.jpg')
     VAO = m5.load_to_gpu()
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o1)
