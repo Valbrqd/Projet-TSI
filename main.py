@@ -30,10 +30,10 @@ def main():
     viewer.add_object(o)
     
     
-    
+#================================== SINGE Suzanne ===============================
     m21 = Mesh.load_obj('singe.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
     tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr21.translation.z = -10
@@ -49,39 +49,38 @@ def main():
     m2.normalize()
     texture2 = glutils.load_texture('cube.jpg')
     vao2 = m2.load_to_gpu()
-    for loop in range(7):
-        for val in range(15):
-            tr2 = Transformation3D()
-            tr2.translation.y = 2+2*loop
-            tr2.translation.z = -15
-            tr2.translation.x = -15+2*val
-            o2 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr2)
-            viewer.add_object(o2)
+    for val in range(30):
+        tr2 = Transformation3D()
+        tr2.translation.y = 0
+        tr2.translation.z = -30
+        tr2.translation.x = -30+2*val
+        o2 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr2)
+        viewer.add_object(o2)
+    
+    for val in range(30):
+        tr3 = Transformation3D()
+        tr3.translation.y =  0
+        tr3.translation.x = -30
+        tr3.translation.z = -30+2*val
+        o3 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr3)
+        viewer.add_object(o3)
+    
+    for val in range(30):
+        tr4 = Transformation3D()
+        tr4.translation.y =  0
+        tr4.translation.z = 30
+        tr4.translation.x = -30+2*val
+        o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
+        viewer.add_object(o4)
         
-        for val in range(15):
-            tr3 = Transformation3D()
-            tr3.translation.y =  2+2*loop
-            tr3.translation.x = -15
-            tr3.translation.z = -15+2*val
-            o3 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr3)
-            viewer.add_object(o3)
         
-        for val in range(15):
-            tr4 = Transformation3D()
-            tr4.translation.y =  2+2*loop
-            tr4.translation.z = 15
-            tr4.translation.x = -15+2*val
-            o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
-            viewer.add_object(o4)
-            
-            
-        for val in range(15):
-            tr5 = Transformation3D()
-            tr5.translation.y =  2+2*loop
-            tr5.translation.x = 15
-            tr5.translation.z = -15+2*val
-            o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
-            viewer.add_object(o5)
+    for val in range(30):
+        tr5 = Transformation3D()
+        tr5.translation.y =  0
+        tr5.translation.x = 30
+        tr5.translation.z = -30+2*val
+        o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
+        viewer.add_object(o5)
 #==================================================================================
     
     
@@ -92,8 +91,21 @@ def main():
     t0, t1, t2, t3 = [0, 0], [1, 0], [1, 1], [0, 1]
     m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
     m.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
-    texture = glutils.load_texture('grass.jpg')
+    texture = glutils.load_texture('blanc.jpg')
     VAO = m.load_to_gpu()
+    tr6 = Transformation3D()
+    tr6.translation.y = 28
+    o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, tr6)
+    viewer.add_object(o1)
+    
+    m5 = Mesh()
+    p05, p15, p25, p35 = [-50, 0, -50], [50, 0, -50], [50, 0, 50], [-50, 0, 50]
+    n5, c5 = [0, 1, 0], [1, 1, 1]
+    t05, t15, t25, t35 = [0, 0], [1, 0], [1, 1], [0, 1]
+    m5.vertices = np.array([[p05 + n5 + c5 + t05], [p15 + n5 + c5 + t15], [p25 + n5 + c5 + t25], [p35 + n5 + c5 + t35]], np.float32)
+    m5.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
+    texture = glutils.load_texture('grass.jpg')
+    VAO = m5.load_to_gpu()
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o1)
     
