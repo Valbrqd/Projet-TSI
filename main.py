@@ -74,7 +74,7 @@ def main():
     o = Text('', np.array([-0.5, -0.2], np.float32), np.array([0.5, 0.3], np.float32), vao, 2, programGUI_id, texture)
     viewer.add_object(o)
     
-    #===================================== Stand ===================================
+#===================================== Stand ===================================
     ms = Mesh.load_obj('ressources/objets/pedestal.obj')
     ms.normalize()
     ms.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
