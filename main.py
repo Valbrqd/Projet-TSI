@@ -73,8 +73,7 @@ def main():
         o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
         viewer.add_object(o4)
         
-        
-    for val in range(30):
+    for val in range (30):   
         tr5 = Transformation3D()
         tr5.translation.y =  0
         tr5.translation.x = 30
