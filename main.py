@@ -29,6 +29,22 @@ def main():
     o.transformation.translation.y = 2
     viewer.add_object(o)
 
+    # m2 = Mesh.load_obj('textured_output.obj')
+    # m2.normalize()
+    # m2.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
+    # tr2 = Transformation3D()
+    # tr2.translation.y = -np.amin(m.vertices, axis=0)[1]
+    # tr2.translation.z = -5
+    # tr2.rotation_center.z = 0.2
+    # texture2 = glutils.load_texture('textured_output.jpg')
+    # o2 = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
+    # o2.transformation.translation.y = 2
+    # viewer.add_object(o)
+    
+
+    
+    
+    
     m = Mesh()
     p0, p1, p2, p3 = [-25, 0, -25], [25, 0, -25], [25, 0, 25], [-25, 0, 25]
     n, c = [0, 1, 0], [1, 1, 1]
@@ -49,6 +65,16 @@ def main():
     o4.transformation.translation.z = 25
     o3 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o3)
+    
+    
+    
+    #création mur
+    m2 = Mesh()
+    p01, p11, p21, p31 = [-25, 0, -25], [25, 0, -25], [25, 0, 25], [-25, 0, 25]
+    n, c = [0, 1, 0], [1, 1, 1]
+    t0, t1, t2, t3 = [0, 0], [1, 0], [1, 1], [0, 1]
+    m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
+    m.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
 
 #===================== Création du batiment du musée ===================================
     program = glutils.create_program_from_file('shadermusee.vert','shadermusee.frag')
@@ -88,7 +114,31 @@ def main():
     GL.glDrawArrays(GL.GL_TRIANGLES, 0, 12*3)
 
     #==================================================================================
-
+    # essay d'affichage mur Rodolphe
+    
+    programm2 = glutils.create_program_from_file('shader.vert', 'shader.frag')
+    GL.glUseProgram(programm2)
+    sommets = np.array(((0, 0, 0), (1, 0, 0), (0, -1, 0)), np.float32)
+    # attribution d'une liste d'e ́tat (1 indique la cre ́ation d'une seule liste)
+    vao2 = GL.glGenVertexArrays(1)
+    # affectation de la liste d'e ́tat courante
+    GL.glBindVertexArray(vao2)
+    # attribution d’un buffer de donnees (1 indique la cre ́ation d’un seul buffer) 
+    vbo2 = GL.glGenBuffers(1)
+    # affectation du buffer courant
+    GL.glBindBuffer(GL.GL_ARRAY_BUFFER, vbo2)
+    
+    # copie des donnees des sommets sur la carte graphique
+    GL.glBufferData(GL.GL_ARRAY_BUFFER, sommets, GL.GL_STATIC_DRAW)
+    
+    
+    # Les deux commandes suivantes sont stocke ́es dans l'e ́tat du vao courant # Active l'utilisation des donne ́es de positions
+    # (le 0 correspond a` la location dans le vertex shader) 
+    GL.glEnableVertexAttribArray(0)
+    # Indique comment le buffer courant (dernier vbo "binde ́")
+    # est utilise ́ pour les positions des sommets 
+    GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, 0)
+    
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
     o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
@@ -100,4 +150,5 @@ def main():
 
 
 if __name__ == '__main__':
+    #GL.glDrawArrays(GL.GL_TRIANGLES, 0, 3)
     main()
