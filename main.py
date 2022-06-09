@@ -67,7 +67,6 @@ def main():
     viewer.add_object(o3)
     
     
-    
     #création mur
     # mur2 = Mesh()
     # p01, p11, p21, p31 = [-25, 0, -25], [25, 0, -25], [-25, 25, -25], [25, 25, -25]
