@@ -35,12 +35,12 @@ def main():
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
+    tr21.translation.y = 3.5
     tr21.translation.z = -10
     tr21.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/grass.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
-    o21.transformation.translation.y = 2
+    #o21.transformation.translation.y = 2
     viewer.add_object(o21)
 #================================= Toit ========================================
     m = Mesh()
