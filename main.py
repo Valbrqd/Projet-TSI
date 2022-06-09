@@ -30,12 +30,12 @@ def main():
     viewer.add_object(o)
     
     
-#================================== SINGE Suzanne ===============================
+#================================== Singe Suzanne ===============================
     m21 = Mesh.load_obj('ressources/objets/singe.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 3.5
+    tr21.translation.y = 2.5
     tr21.translation.z = -10
     tr21.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/or.jpg')
