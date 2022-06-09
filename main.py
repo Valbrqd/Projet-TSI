@@ -42,6 +42,19 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     o21.transformation.translation.y = 2
     viewer.add_object(o21)
+
+#===================================== Stand ===================================
+    ms = Mesh.load_obj('ressources/objets/stand.obj')
+    ms.normalize()
+    ms.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
+    trs = Transformation3D()
+    trs.translation.y = -np.amin(m.vertices, axis=0)[1]
+    trs.translation.z = -10
+    trs.rotation_center.z = 0.2
+    texture = glutils.load_texture('ressources/textures/or.jpg')
+    os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
+    os.transformation.translation.y = 2
+    viewer.add_object(os)
 #================================= Toit ========================================
     m = Mesh()
     p0, p1, p2, p3 = [-50, 0, -50], [50, 0, -50], [50, 0, 50], [-50, 0, 50]
