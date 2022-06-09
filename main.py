@@ -28,6 +28,20 @@ def main():
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
     o.transformation.translation.y = 2
     viewer.add_object(o)
+    
+    
+    
+    m21 = Mesh.load_obj('singe.obj')
+    m21.normalize()
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
+    tr21 = Transformation3D()
+    tr21.translation.y = -np.amin(m.vertices, axis=0)[1]
+    tr21.translation.z = -10
+    tr21.rotation_center.z = 0.2
+    texture = glutils.load_texture('blanc.jpg')
+    o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
+    o21.transformation.translation.y = 2
+    viewer.add_object(o21)
 
 #================================ Cube mur ========================================
 
@@ -35,38 +49,39 @@ def main():
     m2.normalize()
     texture2 = glutils.load_texture('cube.jpg')
     vao2 = m2.load_to_gpu()
-    for val in range(50):
-        tr2 = Transformation3D()
-        tr2.translation.y = -np.amin(m2.vertices, axis = 0)[1]
-        tr2.translation.z = -50
-        tr2.translation.x = -50+2*val
-        o2 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr2)
-        viewer.add_object(o2)
-    
-    for val in range(50):
-        tr3 = Transformation3D()
-        tr3.translation.y = -np.amin(m2.vertices, axis = 0)[1]
-        tr3.translation.x = -50
-        tr3.translation.z = -50+2*val
-        o3 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr3)
-        viewer.add_object(o3)
-    
-    for val in range(50):
-        tr4 = Transformation3D()
-        tr4.translation.y = -np.amin(m2.vertices, axis = 0)[1]
-        tr4.translation.z = 50
-        tr4.translation.x = -50+2*val
-        o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
-        viewer.add_object(o4)
+    for loop in range(7):
+        for val in range(15):
+            tr2 = Transformation3D()
+            tr2.translation.y = 2+2*loop
+            tr2.translation.z = -15
+            tr2.translation.x = -15+2*val
+            o2 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr2)
+            viewer.add_object(o2)
         
+        for val in range(15):
+            tr3 = Transformation3D()
+            tr3.translation.y =  2+2*loop
+            tr3.translation.x = -15
+            tr3.translation.z = -15+2*val
+            o3 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr3)
+            viewer.add_object(o3)
         
-    for val in range(50):
-        tr5 = Transformation3D()
-        tr5.translation.y = -np.amin(m2.vertices, axis = 0)[1]
-        tr5.translation.X = 50
-        tr5.translation.Z = -50+2*val
-        o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
-        viewer.add_object(o5)
+        for val in range(15):
+            tr4 = Transformation3D()
+            tr4.translation.y =  2+2*loop
+            tr4.translation.z = 15
+            tr4.translation.x = -15+2*val
+            o4 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr4)
+            viewer.add_object(o4)
+            
+            
+        for val in range(15):
+            tr5 = Transformation3D()
+            tr5.translation.y =  2+2*loop
+            tr5.translation.x = 15
+            tr5.translation.z = -15+2*val
+            o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
+            viewer.add_object(o5)
 #==================================================================================
     
     
