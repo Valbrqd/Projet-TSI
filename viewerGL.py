@@ -44,6 +44,8 @@ class ViewerGL:
                     self.update_camera(obj.program)
                 obj.draw()
 
+            # print(np.linalg.norm(self.objs[0].transformation.translation - self.objs[1].transformation.translation))         
+
             # changement de buffer d'affichage pour éviter un effet de scintillement
             glfw.swap_buffers(self.window)
             # gestion des évènements
@@ -94,8 +96,10 @@ class ViewerGL:
 
     def update_key(self):
         if glfw.KEY_UP in self.touch and self.touch[glfw.KEY_UP] > 0:
-            self.objs[0].transformation.translation += \
-                pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.05]))
+            d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.05]))
+            print(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x ,  self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)
+            if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x)>15 or abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)>1 :
+                self.objs[0].transformation.translation += d
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             self.objs[0].transformation.translation -= \
                 pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.05]))
