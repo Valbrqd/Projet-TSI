@@ -75,6 +75,7 @@ def main():
     viewer.add_object(o)
 #================================ Cube mur ========================================
 
+    #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
     m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 20, 1, 1]))
@@ -111,6 +112,54 @@ def main():
         tr5.translation.z = -30+2*val
         o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
         viewer.add_object(o5)
+    
+    
+    #===== un seul bloc par côté pour remplir jusqu'au plafond (donc 4 blocs) =====#
+    m3 = Mesh.load_obj('ressources/objets/cube.obj')
+    m3.normalize()
+    m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    vao3 = m3.load_to_gpu()
+    tr6 = Transformation3D()
+    tr6.translation.x = -30
+    tr6.translation.y = +1
+    o6 = Object3D(vao3, m3.get_nb_triangles(), program3d_id, texture, tr6)
+    viewer.add_object(o6)
+    
+    m4 = Mesh.load_obj('ressources/objets/cube.obj')
+    m4.normalize()
+    m4.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    vao4 = m4.load_to_gpu()
+    tr7 = Transformation3D()
+    tr7.translation.x = 30
+    tr7.translation.y = +1
+    o7 = Object3D(vao4, m4.get_nb_triangles(), program3d_id, texture, tr7)
+    viewer.add_object(o7)
+    
+    
+    m5 = Mesh.load_obj('ressources/objets/cube.obj')
+    m5.normalize()
+    m5.apply_matrix(pyrr.matrix44.create_from_scale([30, 30,0.9, 1]))
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    vao5 = m5.load_to_gpu()
+    tr8 = Transformation3D()
+    tr8.translation.z = -30
+    tr8.translation.y = +1
+    o8 = Object3D(vao5, m5.get_nb_triangles(), program3d_id, texture, tr8)
+    viewer.add_object(o8)
+    
+    m6 = Mesh.load_obj('ressources/objets/cube.obj')
+    m6.normalize()
+    m6.apply_matrix(pyrr.matrix44.create_from_scale([30, 30, 0.9, 1]))
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    vao6 = m6.load_to_gpu()
+    tr9 = Transformation3D()
+    tr9.translation.z= 30
+    tr9.translation.y = +1
+    o9 = Object3D(vao6, m6.get_nb_triangles(), program3d_id, texture, tr9)
+    viewer.add_object(o9)
+    
 #==================================================================================
     
     
