@@ -1,3 +1,4 @@
+from pickle import FALSE, TRUE
 import OpenGL.GL as GL
 import glfw
 import pyrr
@@ -96,17 +97,21 @@ class ViewerGL:
 
     def update_key(self):
         if glfw.KEY_UP in self.touch and self.touch[glfw.KEY_UP] > 0:
-            d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.05]))
-            print(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x ,  self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)
-            if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x)>15 or abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)>1 :
+            d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
+            #print(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x ,  self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)
+            bol = True
+            for i in range(6,len(self.objs)):
+                if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1 :
+                    bol = False
+            if bol :
                 self.objs[0].transformation.translation += d
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             self.objs[0].transformation.translation -= \
-                pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.05]))
+                pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.1]))
         if glfw.KEY_LEFT in self.touch and self.touch[glfw.KEY_LEFT] > 0:
-            self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] -= 0.1
+            self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] -= 0.2
         if glfw.KEY_RIGHT in self.touch and self.touch[glfw.KEY_RIGHT] > 0:
-            self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] += 0.1
+            self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] += 0.2
 
         if glfw.KEY_I in self.touch and self.touch[glfw.KEY_I] > 0:
             self.cam.transformation.rotation_euler[pyrr.euler.index().roll] -= 0.1
