@@ -174,7 +174,19 @@ def main():
     viewer.add_object(o9)
 
 #============================= Barrières =======================================
+    mbar = Mesh.load_obj('ressources/objets/cube.obj')
+    mbar.normalize()
+    mbar.apply_matrix(pyrr.matrix44.create_from_scale([1, 1, 1, 1]))
+    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
+    vaobar = mbar.load_to_gpu()
 
+    for val in range(10):
+        trbar = Transformation3D()
+        trbar.translation.y = 0
+        trbar.translation.z = 0
+        trbar.translation.x = val
+        obar = Object3D(vaobar, mbar.get_nb_triangles(), program3d_id, texture2, trbar)
+        viewer.add_object(obar)
 
 #===============================================================================   
 
