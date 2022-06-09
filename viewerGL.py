@@ -3,8 +3,7 @@ import OpenGL.GL as GL
 import glfw
 import pyrr
 import numpy as np
-from cpe3d import Object3D
-
+import cpe3d as txt
 class ViewerGL:
     def __init__(self):
         # initialisation de la librairie GLFW
@@ -41,7 +40,7 @@ class ViewerGL:
 
             for obj in self.objs:
                 GL.glUseProgram(obj.program)
-                if isinstance(obj, Object3D):
+                if isinstance(obj, txt.Object3D):
                     self.update_camera(obj.program)
                 obj.draw()
 
@@ -98,13 +97,19 @@ class ViewerGL:
     def update_key(self):
         if glfw.KEY_UP in self.touch and self.touch[glfw.KEY_UP] > 0:
             d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
-            #print(self.objs[0].transformation.translation.x + d[0] -self.objs[1].transformation.translation.x ,  self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)
             bol = True
             for i in range(6,len(self.objs)):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
             if bol :
                 self.objs[0].transformation.translation += d
+
+            # if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[i].transformation.translation.x)<2 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)<2 :
+            #     self.texte.value = "Le singe suzanne"
+            #     self.texte.visible = True
+            # else :
+            #     self.texte.visible = False
+
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             self.objs[0].transformation.translation -= \
                 pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.1]))
