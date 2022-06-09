@@ -78,7 +78,7 @@ def main():
     #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
-    m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 20, 1, 1]))
+    m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 1, 1, 1]))
     texture2 = glutils.load_texture('ressources/textures/mur.jpg')
     vao2 = m2.load_to_gpu()
     for val in range(30):
@@ -113,12 +113,11 @@ def main():
         o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
         viewer.add_object(o5)
     
-    
-    #===== un seul bloc par côté pour remplir jusqu'au plafond (donc 4 blocs) =====#
+#========== un seul bloc par côté pour remplir jusqu'au plafond (donc 4 blocs) ==============
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
     m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
-    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
     vao3 = m3.load_to_gpu()
     tr6 = Transformation3D()
     tr6.translation.x = -30
@@ -129,7 +128,7 @@ def main():
     m4 = Mesh.load_obj('ressources/objets/cube.obj')
     m4.normalize()
     m4.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
-    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
     vao4 = m4.load_to_gpu()
     tr7 = Transformation3D()
     tr7.translation.x = 30
@@ -141,7 +140,7 @@ def main():
     m5 = Mesh.load_obj('ressources/objets/cube.obj')
     m5.normalize()
     m5.apply_matrix(pyrr.matrix44.create_from_scale([30, 30,0.9, 1]))
-    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
     vao5 = m5.load_to_gpu()
     tr8 = Transformation3D()
     tr8.translation.z = -30
@@ -152,7 +151,7 @@ def main():
     m6 = Mesh.load_obj('ressources/objets/cube.obj')
     m6.normalize()
     m6.apply_matrix(pyrr.matrix44.create_from_scale([30, 30, 0.9, 1]))
-    texture = glutils.load_texture('ressources/textures/blanc.jpg')
+    texture = glutils.load_texture('ressources/textures/mur4K.jpg')
     vao6 = m6.load_to_gpu()
     tr9 = Transformation3D()
     tr9.translation.z= 30
