@@ -51,43 +51,8 @@ def main():
     viewer.add_object(o3)
 
 #===================== Création du batiment du musée ===================================
-    program = glutils.create_program_from_file('shadermusee.vert','shadermusee.frag')
-    GL.glUseProgram(program)
-    sommetsmusee = np.array(((-1.0,-1.0,-1.0),(-1.0,-1.0, 1.0),(-1.0, 1.0, 1.0), 
-    (1.0, 1.0,-1.0),(-1.0,-1.0,-1.0),(-1.0, 1.0,-1.0), 
-    (1.0,-1.0, 1.0),(-1.0,-1.0,-1.0),(1.0,-1.0,-1.0),
-    (1.0, 1.0,-1.0),(1.0,-1.0,-1.0),(-1.0,-1.0,-1.0),
-    (-1.0,-1.0,-1.0),(-1.0, 1.0, 1.0),(-1.0, 1.0,-1.0),
-    (1.0,-1.0, 1.0),(-1.0,-1.0, 1.0),(-1.0,-1.0,-1.0),
-    (-1.0, 1.0, 1.0),(-1.0,-1.0, 1.0),(1.0,-1.0, 1.0),
-    (1.0, 1.0, 1.0),(1.0,-1.0,-1.0),(1.0, 1.0,-1.0),
-    (1.0,-1.0,-1.0),(1.0, 1.0, 1.0),(1.0,-1.0, 1.0),
-    (1.0, 1.0, 1.0),(1.0, 1.0,-1.0),(-1.0, 1.0,-1.0),
-    (1.0, 1.0, 1.0),(-1.0, 1.0,-1.0),(-1.0, 1.0, 1.0),
-    (1.0, 1.0, 1.0),(-1.0, 1.0, 1.0),(1.0,-1.0, 1.0)),np.float32)
-
-    # attribution d'une liste d'etat (1 indique la création d'une seule liste) ´
-    vao = GL.glGenVertexArrays(1)
-    # affectation de la liste d'etat courante ´
-    GL.glBindVertexArray(vao)
-    # attribution d’un buffer de donnees (1 indique la création d’un seul buffer) ´
-    vbo = GL.glGenBuffers(1)
-    # affectation du buffer courant
-    GL.glBindBuffer(GL.GL_ARRAY_BUFFER, vbo)
-
-    GL.glBufferData(GL.GL_ARRAY_BUFFER, sommetsmusee, GL.GL_STATIC_DRAW)
-
-    # Les deux commandes suivantes sont stockees dans l' ´ etat du vao courant ´
-    # Active l'utilisation des donnees de positions ´
-    # (le 0 correspond a la location dans le vertex shader) `
-    GL.glEnableVertexAttribArray(0)
-    # Indique comment le buffer courant (dernier vbo "binde") ´
-    # est utilise pour les positions des sommets ´
-    GL.glVertexAttribPointer(0, 3, GL.GL_FLOAT, GL.GL_FALSE, 0, None)
-
-    GL.glDrawArrays(GL.GL_TRIANGLES, 0, 12*3)
-
-    #==================================================================================
+    
+#=======================================================================================
 
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('fontB.jpg')
