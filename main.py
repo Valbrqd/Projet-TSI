@@ -75,6 +75,7 @@ def main():
     viewer.add_object(o)
 #================================ Cube mur ========================================
 
+    #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
     m2.apply_matrix(pyrr.matrix44.create_from_scale([1, 1, 1, 1]))
@@ -112,6 +113,8 @@ def main():
         o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
         viewer.add_object(o5)
     
+    
+    #===== un seul bloc par côté pour remplir jusqu'au plafond (donc 4 blocs) =====#
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
     m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
