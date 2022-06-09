@@ -49,10 +49,10 @@ def main():
     t0, t1, t2, t3 = [0, 0], [1, 0], [1, 1], [0, 1]
     m.vertices = np.array([[p0 + n + c + t0], [p1 + n + c + t1], [p2 + n + c + t2], [p3 + n + c + t3]], np.float32)
     m.faces = np.array([[0, 1, 2], [0, 2, 3]], np.uint32)
-    texture = glutils.load_texture('ressources/textures/sol.jpg')
+    texture = glutils.load_texture('ressources/textures/blanc.jpg')
     VAO = m.load_to_gpu()
     tr6 = Transformation3D()
-    tr6.translation.y = 28
+    tr6.translation.y = 13
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, tr6)
     viewer.add_object(o1)
 #================================= Sol ========================================   
@@ -130,7 +130,7 @@ def main():
     #===== Bloc haut mur (donc 4 blocs) =====#
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
-    m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
+    m3.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 15, 30, 1]))
     texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao3 = m3.load_to_gpu()
     tr6 = Transformation3D()
@@ -141,7 +141,7 @@ def main():
     
     m4 = Mesh.load_obj('ressources/objets/cube.obj')
     m4.normalize()
-    m4.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 30, 30, 1]))
+    m4.apply_matrix(pyrr.matrix44.create_from_scale([0.9, 15, 30, 1]))
     texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao4 = m4.load_to_gpu()
     tr7 = Transformation3D()
@@ -153,7 +153,7 @@ def main():
     
     m5 = Mesh.load_obj('ressources/objets/cube.obj')
     m5.normalize()
-    m5.apply_matrix(pyrr.matrix44.create_from_scale([30, 30,0.9, 1]))
+    m5.apply_matrix(pyrr.matrix44.create_from_scale([30, 15,0.9, 1]))
     texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao5 = m5.load_to_gpu()
     tr8 = Transformation3D()
@@ -164,7 +164,7 @@ def main():
     
     m6 = Mesh.load_obj('ressources/objets/cube.obj')
     m6.normalize()
-    m6.apply_matrix(pyrr.matrix44.create_from_scale([30, 30, 0.9, 1]))
+    m6.apply_matrix(pyrr.matrix44.create_from_scale([30, 15, 0.9, 1]))
     texture = glutils.load_texture('ressources/textures/blanc.jpg')
     vao6 = m6.load_to_gpu()
     tr9 = Transformation3D()
@@ -174,7 +174,6 @@ def main():
     viewer.add_object(o9)
 
 #============================= Barrières =======================================
-
 
 
 #===============================================================================   
