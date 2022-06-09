@@ -1,3 +1,4 @@
+from decimal import DivisionUndefined
 import OpenGL.GL as GL
 import pyrr
 import numpy as np 
