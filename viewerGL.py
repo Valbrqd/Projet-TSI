@@ -15,7 +15,7 @@ class ViewerGL:
         glfw.window_hint(glfw.OPENGL_PROFILE, glfw.OPENGL_CORE_PROFILE)
         # création et paramétrage de la fenêtre
         glfw.window_hint(glfw.RESIZABLE, False)
-        self.window = glfw.create_window(1080, 720, 'OpenGL', None, None)
+        self.window = glfw.create_window(1920, 1080, 'OpenGL', None, None)
         # paramétrage de la fonction de gestion des évènements
         glfw.set_key_callback(self.window, self.key_callback)
         # activation du context OpenGL pour la fenêtre
@@ -98,17 +98,17 @@ class ViewerGL:
         if glfw.KEY_UP in self.touch and self.touch[glfw.KEY_UP] > 0:
             d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
             bol = True
-            for i in range(6,len(self.objs)):
+            for i in range(4,len(self.objs)-1):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
             if bol :
                 self.objs[0].transformation.translation += d
 
-            # if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[i].transformation.translation.x)<2 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)<2 :
-            #     self.texte.value = "Le singe suzanne"
-            #     self.texte.visible = True
-            # else :
-            #     self.texte.visible = False
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[1].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)<3 :
+                self.objs[-1].value = "Le singe suzanne"
+                self.objs[-1].visible = True
+            else :
+                self.objs[-1].visible = False
 
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             self.objs[0].transformation.translation -= \
