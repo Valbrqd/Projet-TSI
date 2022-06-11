@@ -98,42 +98,38 @@ def main():
     o1 = Object3D(VAO, m.get_nb_triangles(), program3d_id, texture, Transformation3D())
     viewer.add_object(o1)
     
-#===================================== Stand Suzanne ===================================
+#===================================== Stands ===================================
     ms = Mesh.load_obj('ressources/objets/pedestal.obj')
     ms.normalize()
     ms.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
-    trs = Transformation3D()
-    trs.translation.z = -22
-    trs.translation.x = -15
-    trs.rotation_center.z = 0.2
+    vaostand = ms.load_to_gpu()
     texture = glutils.load_texture('ressources/textures/BaseColor.png')
-    os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
-    os.transformation.translation.y = 1
-    viewer.add_object(os)
-    
-    
-#===================================== Stand Maxime  ===================================
-    trs = Transformation3D()
-    trs.translation.z = -22
-    trs.translation.x = 15
-    trs.rotation_center.z = 0.2
-    texture = glutils.load_texture('ressources/textures/BaseColor.png')
-    os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
-    os.transformation.translation.y = 1
-    viewer.add_object(os)
-    
-#===================================== Stand voiture  ===================================
-    trs = Transformation3D()
-    trs.translation.z = -22
-    trs.translation.x = 0
-    trs.rotation_center.z = 0.2
-    texture = glutils.load_texture('ressources/textures/BaseColor.png')
-    os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
-    os.transformation.translation.y = 1
-    viewer.add_object(os)
-    
-#================================ Cube mur ========================================
 
+    for bcls in range(3):
+        trs = Transformation3D()
+        trs.translation.z = -22
+        trs.translation.x = -15 + 15*bcls
+        trs.rotation_center.z = 0.2
+        os = Object3D(vaostand, m21.get_nb_triangles(), program3d_id, texture ,trs)
+        os.transformation.translation.y = 1
+        viewer.add_object(os)
+
+    for bcls2 in range(3):
+        trs = Transformation3D()
+        trs.translation.z = 22
+        trs.translation.x = -15 + 15*bcls2
+        trs.rotation_center.z = 0.2
+        os = Object3D(vaostand, m21.get_nb_triangles(), program3d_id, texture ,trs)
+        os.transformation.translation.y = 1
+        viewer.add_object(os)
+    trs = Transformation3D()
+    trs.translation.z = 0
+    trs.translation.x = 25
+    trs.rotation_center.z = 0.2
+    os = Object3D(vaostand, m21.get_nb_triangles(), program3d_id, texture ,trs)
+    os.transformation.translation.y = 1
+    viewer.add_object(os)
+#================================ Cube mur ========================================
     #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
     m2.normalize()
@@ -172,7 +168,6 @@ def main():
         o5 = Object3D(vao2, m2.get_nb_triangles(), program3d_id, texture2, tr5)
         viewer.add_object(o5)
     
-    
     #===== Bloc haut mur (donc 4 blocs) =====#
     m3 = Mesh.load_obj('ressources/objets/cube.obj')
     m3.normalize()
@@ -195,7 +190,6 @@ def main():
     tr7.translation.y = +1
     o7 = Object3D(vao4, m4.get_nb_triangles(), program3d_id, texture, tr7)
     viewer.add_object(o7)
-    
     
     m5 = Mesh.load_obj('ressources/objets/cube.obj')
     m5.normalize()
@@ -243,10 +237,7 @@ def main():
     viewer.add_object(o)
     o.visible = False
 #===============================================================================
-   
-
     viewer.run()
-
 
 if __name__ == '__main__':
 
