@@ -30,7 +30,21 @@ def main():
     viewer.add_object(o)
     
     
-#================================== Singe Suzanne ===============================           /!\ J'ai pas reussi à effectuer une rotation pour qu'elle regardele centre de la pièce, nécessaire ?
+#================================== Singe Suzanne ===============================           /!\ J'ai pas reussi à effectuer une rotation pour qu'elle regarde le centre de la pièce, nécessaire ?
+    m21 = Mesh.load_obj('ressources/objets/singe.obj')
+    m21.normalize()
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    tr21 = Transformation3D()
+    tr21.translation.y = 2.5
+    tr21.translation.z = -15
+    tr21.translation.x = 15
+    tr21.rotation_center.z = -0.2
+    texture = glutils.load_texture('ressources/textures/or.jpg')
+    o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
+    #o21.transformation.translation.y = 2
+    viewer.add_object(o21)
+    
+    #================================== Maxime Cornaton ===============================           /!\ Scanner maxime
     m21 = Mesh.load_obj('ressources/objets/singe.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
@@ -44,20 +58,6 @@ def main():
     #o21.transformation.translation.y = 2
     viewer.add_object(o21)
     
-    #================================== Maxime Cornaton ===============================           /!\ Scanner maxime
-    m21 = Mesh.load_obj('ressources/objets/singe.obj')
-    m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
-    tr21 = Transformation3D()
-    tr21.translation.y = 2.5
-    tr21.translation.z = 15
-    tr21.translation.x = 15
-    tr21.rotation_center.z = -0.2
-    texture = glutils.load_texture('ressources/textures/or.jpg')
-    o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
-    #o21.transformation.translation.y = 2
-    viewer.add_object(o21)
-    
     
     #================================== Voiture ===============================        
     m21 = Mesh.load_obj('ressources/objets/singe.obj')
@@ -65,8 +65,8 @@ def main():
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 2.5
-    tr21.translation.z = 15
-    tr21.translation.x = 15
+    tr21.translation.z = -15
+    tr21.translation.x = 0
     tr21.rotation_center.z = -0.2
     texture = glutils.load_texture('ressources/textures/or.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
@@ -115,7 +115,7 @@ def main():
     
     #===================================== Stand Maxime  ===================================
     trs = Transformation3D()
-    trs.translation.z = 15
+    trs.translation.z = -15
     trs.translation.x = 15
     trs.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/BaseColor.png')
@@ -125,8 +125,8 @@ def main():
     
     #===================================== Stand voiture  ===================================
     trs = Transformation3D()
-    trs.translation.z = 15
-    trs.translation.x = -15
+    trs.translation.z = -15
+    trs.translation.x = 0
     trs.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/BaseColor.png')
     os = Object3D(ms.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,trs)
@@ -222,141 +222,21 @@ def main():
 
 #============================= Barrières =======================================
 
-    #===== suzanne =====#
+
     mbar1 = Mesh.load_obj('ressources/objets/cube.obj')
     mbar1.normalize()
-    mbar1.apply_matrix(pyrr.matrix44.create_from_scale([1, 1.7, 0.2, 1]))
+    mbar1.apply_matrix(pyrr.matrix44.create_from_scale([0.1, 1.7, 2, 1]))
     texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
     vaobar = mbar1.load_to_gpu()
 
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = 16
-        trbar.translation.x = 14+val
-        obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = 14
-        trbar.translation.x = 14+val
-        obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    mbar2 = Mesh.load_obj('ressources/objets/cube.obj')
-    mbar2.normalize()
-    mbar2.apply_matrix(pyrr.matrix44.create_from_scale([0.15, 1.7, 0.8, 1]))
-    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
-    vaobar2 = mbar2.load_to_gpu()
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = 15
-    trbar.translation.x = 13.15
-    obar = Object3D(vaobar2, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-        
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = 15
-    trbar.translation.x = 16.85
-    obar = Object3D(vaobar2, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-    #===================#
-    
-    #===== Maxime =====#
-    mbar3 = Mesh.load_obj('ressources/objets/cube.obj')
-    mbar3.normalize()
-    mbar3.apply_matrix(pyrr.matrix44.create_from_scale([1, 1.7, 0.2, 1]))
-    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
-    vaobar3 = mbar3.load_to_gpu()
-
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = -16
-        trbar.translation.x = -14-val
-        obar = Object3D(vaobar3, mbar3.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = -14
-        trbar.translation.x = -14-val
-        obar = Object3D(vaobar3, mbar3.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    mbar4 = Mesh.load_obj('ressources/objets/cube.obj')
-    mbar4.normalize()
-    mbar4.apply_matrix(pyrr.matrix44.create_from_scale([0.15, 1.7, 0.8, 1]))
-    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
-    vaobar4 = mbar4.load_to_gpu()
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = -15
-    trbar.translation.x = -13.15
-    obar = Object3D(vaobar4, mbar4.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-        
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = -15
-    trbar.translation.x = -16.85
-    obar = Object3D(vaobar4, mbar4.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-    #==================#
-    
-    #===== Voiture =====#
-    mbar5 = Mesh.load_obj('ressources/objets/cube.obj')
-    mbar5.normalize()
-    mbar5.apply_matrix(pyrr.matrix44.create_from_scale([1, 1.7, 0.2, 1]))
-    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
-    vaobar5 = mbar5.load_to_gpu()
-
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = 16
-        trbar.translation.x = -14-val
-        obar = Object3D(vaobar5, mbar5.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    for val in range(3):
-        trbar = Transformation3D()
-        trbar.translation.y = 0
-        trbar.translation.z = 14
-        trbar.translation.x = -14-val
-        obar = Object3D(vaobar5, mbar5.get_nb_triangles(), program3d_id, texturebar, trbar)
-        viewer.add_object(obar)
-    
-    mbar6 = Mesh.load_obj('ressources/objets/cube.obj')
-    mbar6.normalize()
-    mbar6.apply_matrix(pyrr.matrix44.create_from_scale([0.15, 1.7, 0.8, 1]))
-    texturebar = glutils.load_texture('ressources/textures/blanc.jpg')
-    vaobar6 = mbar6.load_to_gpu()
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = 15
-    trbar.translation.x = -13.15
-    obar = Object3D(vaobar6, mbar6.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-        
-    
-    trbar = Transformation3D()
-    trbar.translation.y = 0
-    trbar.translation.z = 15
-    trbar.translation.x = -16.85
-    obar = Object3D(vaobar6, mbar6.get_nb_triangles(), program3d_id, texturebar, trbar)
-    viewer.add_object(obar)
-    
-    
+    for loop in range(2):
+        for val in range(7):
+            trbar = Transformation3D()
+            trbar.translation.y = 0
+            trbar.translation.z = -18+val
+            trbar.translation.x = 7.5 - 15*loop
+            obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
+            viewer.add_object(obar)
     
     
 #================================= Textes =========================================
