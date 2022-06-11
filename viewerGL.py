@@ -104,9 +104,21 @@ class ViewerGL:
                     bol = False
             if bol :
                 self.objs[0].transformation.translation += d
-
+#================================ Affichage Suzanne ==========================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[1].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[1].transformation.translation.z)<3 :
                 self.objs[-1].value = "Le singe suzanne"
+                self.objs[-1].visible = True
+            else :
+                self.objs[-1].visible = False
+#================================ Affichage Stegosaurus ==========================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[2].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[2].transformation.translation.z)<3 :
+                self.objs[-1].value = "Stegosaurus de TSI"
+                self.objs[-1].visible = True
+            else :
+                self.objs[-1].visible = False
+#================================ Affichage Voiture ==========================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[3].transformation.translation.z)<3 :
+                self.objs[-1].value = "Voiture"
                 self.objs[-1].visible = True
             else :
                 self.objs[-1].visible = False
