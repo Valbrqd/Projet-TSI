@@ -228,6 +228,25 @@ def main():
             trbar.translation.x = 7.5 - 15*loop
             obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
             viewer.add_object(obar)
+
+    for loop in range(2):
+        for val in range(7):
+            trbar = Transformation3D()
+            trbar.translation.y = 0
+            trbar.translation.z = 27-val
+            trbar.translation.x = 7.5 - 15*loop
+            obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
+            viewer.add_object(obar)
+
+    # for loop in range(2):                    /!\ Pour le stand central faitre un carré autour pour faire comme si c'etait une oeuvre ultra rare
+    #     for val in range(7):
+    #         trbar = Transformation3D()
+    #         trbar.translation.y = 0
+    #         trbar.translation.z = 27-val
+    #         trbar.translation.x = 7.5 - 15*loop
+    #         obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
+    #         viewer.add_object(obar)
+    
     
     
 #================================= Textes =========================================
