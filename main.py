@@ -73,9 +73,9 @@ def main():
     #===================================== Donut doré ===============================
     m21 = Mesh.load_obj('ressources/objets/donut.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 2.8
+    tr21.translation.y = 3.3
     tr21.translation.z = 22
     tr21.translation.x = 0
     tr21.rotation_center.z = 1
