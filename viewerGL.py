@@ -156,7 +156,7 @@ class ViewerGL:
                 self.objs[-8].visible = False
 #================================ Dragon centrale ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[7].transformation.translation.x)<10 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<10 :
-                self.objs[-7].value = "Dragon ancestrale"
+                self.objs[-7].value = "T-rex du film jurassic Park !"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False
@@ -209,7 +209,7 @@ class ViewerGL:
                 self.objs[-8].visible = False
 
             if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[7].transformation.translation.x)<10 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[7].transformation.translation.z)<10 :
-                self.objs[-7].value = "Dragon ancestrale"
+                self.objs[-7].value = "T-rex du film jurassic Park !"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False

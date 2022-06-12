@@ -110,14 +110,14 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
     
-#====================================== Dragon ======================================
+#====================================== T-rex ======================================
     m21 = Mesh.load_obj('ressources/objets/trex.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([10,10,10,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([9,9,9,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 3
     tr21.translation.z = 0
-    tr21.translation.x = 25
+    tr21.translation.x = 20
     tr21.rotation_center.z = -0.2
     texture = glutils.load_texture('ressources/textures/trex.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
@@ -297,7 +297,7 @@ def main():
         trbar = Transformation3D()
         trbar.translation.y = 0
         trbar.translation.z = -0.6 +val
-        trbar.translation.x = 20
+        trbar.translation.x = 16
         obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
         viewer.add_object(obar)
     
@@ -308,11 +308,11 @@ def main():
     vaobar2 = mbar2.load_to_gpu()
 
     for loop in range(2):
-        for val in range(7):
+        for val in range(11):
             trbar2 = Transformation3D()
             trbar2.translation.y = 0
             trbar2.translation.z = -2.5 + 5*loop
-            trbar2.translation.x = 22 +val
+            trbar2.translation.x = 18 +val
             obar2 = Object3D(vaobar2, mbar2.get_nb_triangles(), program3d_id, texturebar2, trbar2)
             viewer.add_object(obar2)
     
