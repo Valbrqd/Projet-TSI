@@ -39,6 +39,7 @@ class ViewerGL:
             self.objs[5].transformation.rotation_euler[pyrr.euler.index().yaw] = -3.2
             self.objs[6].transformation.rotation_euler[pyrr.euler.index().pitch] = -3.2
             self.objs[6].transformation.rotation_euler[pyrr.euler.index().roll] = 1.6
+            
             GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
             # nettoyage de la fenêtre : fond et profondeur
             self.update_key()
