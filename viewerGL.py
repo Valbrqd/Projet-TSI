@@ -39,7 +39,7 @@ class ViewerGL:
             self.objs[5].transformation.rotation_euler[pyrr.euler.index().yaw] = -3.2
             self.objs[6].transformation.rotation_euler[pyrr.euler.index().pitch] = -3.2
             self.objs[6].transformation.rotation_euler[pyrr.euler.index().roll] = 1.6
-            
+            self.objs[7].transformation.rotation_euler[pyrr.euler.index().yaw] = np.pi/2
             GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
             # nettoyage de la fenêtre : fond et profondeur
             self.update_key()
@@ -150,7 +150,13 @@ class ViewerGL:
                 self.objs[-6].visible = False
 #================================ EE ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[8].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[8].transformation.translation.z)<3 :
-                self.objs[-7].value = "Bonne note svp"
+                self.objs[-8].value = "Bonne note svp"
+                self.objs[-8].visible = True
+            else :
+                self.objs[-8].visible = False
+#================================ Dragon centrale ==============================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[7].transformation.translation.x)<10 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<10 :
+                self.objs[-7].value = "Dragon ancestrale"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False
@@ -197,7 +203,13 @@ class ViewerGL:
                 self.objs[-6].visible = False
             
             if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[8].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[8].transformation.translation.z)<3 :
-                self.objs[-7].value = "Bonne note svp"
+                self.objs[-8].value = "Bonne note svp"
+                self.objs[-8].visible = True
+            else :
+                self.objs[-8].visible = False
+
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[7].transformation.translation.x)<10 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[7].transformation.translation.z)<10 :
+                self.objs[-7].value = "Dragon ancestrale"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False
