@@ -99,7 +99,7 @@ class ViewerGL:
 #===================================== Gestion collision et affichge texte ========================================
             d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
             bol = True
-            for i in range(4,len(self.objs)-1):
+            for i in range(4,len(self.objs)-2):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
             if bol :
@@ -112,10 +112,10 @@ class ViewerGL:
                 self.objs[-1].visible = False
 #================================ Affichage Stegosaurus ==========================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[2].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[2].transformation.translation.z)<3 :
-                self.objs[-1].value = "Stegosaurus"
-                self.objs[-1].visible = True
+                self.objs[-2].value = "Stegosaurus"
+                self.objs[-2].visible = True
             else :
-                self.objs[-1].visible = False
+                self.objs[-2].visible = False
 #================================ Affichage Voiture ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[3].transformation.translation.z)<3 :
                 self.objs[-1].value = "Voiture"
