@@ -249,21 +249,14 @@ def main():
     
     
     
-#================================= Texte1 =========================================
+#================================= Textes =========================================
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('ressources/textures/fontB.jpg')
-    o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
-    viewer.add_object(o)
-    o.visible = False
-    
-    
-    o2 = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
-    viewer.add_object(o2)
-    o2.visible = False
 
-    o3 = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
-    viewer.add_object(o3)
-    o3.visible = False
+    for i in range(6):
+        o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
+        viewer.add_object(o)
+        o.visible = False
 #===============================================================================
     viewer.run()
 
