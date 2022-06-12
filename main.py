@@ -23,6 +23,7 @@ def main():
     tr = Transformation3D()
     tr.translation.y = -np.amin(m.vertices, axis=0)[1]
     tr.translation.z = -5
+    tr.translation.x = -5
     tr.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/textured_output.jpg')
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
@@ -109,6 +110,20 @@ def main():
     texture = glutils.load_texture('ressources/textures/naruto.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
+    
+#====================================== dragon ======================================
+    m21 = Mesh.load_obj('ressources/objets/dragon.obj')
+    m21.normalize()
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([4,4,4,1]))
+    tr21 = Transformation3D()
+    tr21.translation.y = 2.5
+    tr21.translation.z = 0
+    tr21.translation.x = 0
+    tr21.rotation_center.z = -0.2
+    texture = glutils.load_texture('ressources/textures/or.jpg')
+    o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
+    viewer.add_object(o21)
+    
 #============================ Easter Egg =============================================
     m21 = Mesh.load_obj('ressources/objets/gift.obj')
     m21.normalize()

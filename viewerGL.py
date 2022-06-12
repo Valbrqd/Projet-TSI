@@ -107,6 +107,8 @@ class ViewerGL:
             for i in range(5,len(self.objs)-8):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
+                elif abs(self.objs[0].transformation.translation.x + d[0] -self.objs[7].transformation.translation.x)<5 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<5:
+                    bol = False
             if bol :
                 self.objs[0].transformation.translation += d
 #================================ Affichage Suzanne ==============================================
@@ -146,7 +148,7 @@ class ViewerGL:
             else :
                 self.objs[-6].visible = False
 #================================ EE ==============================================
-            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<3 :
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[8].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[8].transformation.translation.z)<3 :
                 self.objs[-7].value = "Bonne note svp"
                 self.objs[-7].visible = True
             else :
@@ -193,7 +195,7 @@ class ViewerGL:
             else :
                 self.objs[-6].visible = False
             
-            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[7].transformation.translation.z)<3 :
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[8].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[8].transformation.translation.z)<3 :
                 self.objs[-7].value = "Bonne note svp"
                 self.objs[-7].visible = True
             else :
