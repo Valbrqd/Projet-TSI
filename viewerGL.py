@@ -100,7 +100,7 @@ class ViewerGL:
 #===================================== Gestion collision et affichge texte ========================================
             d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
             bol = True
-            for i in range(5,len(self.objs)-7):
+            for i in range(5,len(self.objs)-8):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
             if bol :
@@ -141,12 +141,13 @@ class ViewerGL:
                 self.objs[-6].visible = True
             else :
                 self.objs[-6].visible = False
-#================================ Affichage Central ==============================================
+#================================ EE ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<3 :
-                self.objs[-7].value = "Central"
+                self.objs[-7].value = "Bonne note svp"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False
+
 #=================================================================================================
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             d2= pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.1]))
@@ -189,10 +190,11 @@ class ViewerGL:
                 self.objs[-6].visible = False
             
             if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[7].transformation.translation.z)<3 :
-                self.objs[-7].value = "Central"
+                self.objs[-7].value = "Bonne note svp"
                 self.objs[-7].visible = True
             else :
                 self.objs[-7].visible = False
+
 #====================================================================================================================================
         if glfw.KEY_LEFT in self.touch and self.touch[glfw.KEY_LEFT] > 0:
             self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] -= 0.1

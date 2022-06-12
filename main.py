@@ -60,7 +60,7 @@ def main():
     #================================== Voiture ===============================        
     m21 = Mesh.load_obj('ressources/objets/LowPolyCars.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 2.5
     tr21.translation.z = -22
@@ -98,13 +98,25 @@ def main():
 
 
     #====================================== dracaufeu ======================================
-    m21 = Mesh.load_obj('ressources/objets/dracaufeu.obj')
+    m21 = Mesh.load_obj('ressources/objets/singe.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 2.5
     tr21.translation.z = 22
     tr21.translation.x = -15
+    tr21.rotation_center.z = -0.2
+    texture = glutils.load_texture('ressources/textures/or.jpg')
+    o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
+    viewer.add_object(o21)
+#============================ Easter Egg =============================================
+    m21 = Mesh.load_obj('ressources/objets/Present.obj')
+    m21.normalize()
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    tr21 = Transformation3D()
+    tr21.translation.y = 1
+    tr21.translation.z = -40
+    tr21.translation.x = 0
     tr21.rotation_center.z = -0.2
     texture = glutils.load_texture('ressources/textures/or.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
@@ -288,7 +300,7 @@ def main():
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('ressources/textures/fontB.jpg')
 
-    for i in range(6):
+    for i in range(7):
         o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
         viewer.add_object(o)
         o.visible = False
