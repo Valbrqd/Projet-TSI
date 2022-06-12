@@ -110,15 +110,15 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
 #============================ Easter Egg =============================================
-    m21 = Mesh.load_obj('ressources/objets/Present.obj')
+    m21 = Mesh.load_obj('ressources/objets/gift.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.4,0.5,0.5,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 1
     tr21.translation.z = -40
     tr21.translation.x = 0
     tr21.rotation_center.z = -0.2
-    texture = glutils.load_texture('ressources/textures/or.jpg')
+    texture = glutils.load_texture('ressources/textures/gift.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
 #================================= Toit ========================================
