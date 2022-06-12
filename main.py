@@ -86,9 +86,9 @@ def main():
     #====================================== Loup ======================================
     m21 = Mesh.load_obj('ressources/objets/lou.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([1.5,1.5,1.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 2.5
+    tr21.translation.y = 2.8
     tr21.translation.z = 22.5
     tr21.translation.x = 15
     tr21.rotation_center.z = -0.2
