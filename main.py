@@ -44,7 +44,7 @@ def main():
     #o21.transformation.translation.y = 2
     viewer.add_object(o21)
     
-    #================================== Stegosaurus ===============================           /!\ Scanner maxime
+    #================================== Stegosaurus ===============================           
     m21 = Mesh.load_obj('ressources/objets/stegosaurus.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
@@ -238,7 +238,7 @@ def main():
             obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
             viewer.add_object(obar)
 
-    # for loop in range(2):                    /!\ Pour le stand central faitre un carré autour pour faire comme si c'etait une oeuvre ultra rare
+    # for loop in range(2):                    #/!\ Pour le stand central faitre un carré autour pour faire comme si c'etait une oeuvre ultra rare
     #     for val in range(7):
     #         trbar = Transformation3D()
     #         trbar.translation.y = 0
@@ -249,12 +249,17 @@ def main():
     
     
     
-#================================= Textes =========================================
+#================================= Texte1 =========================================
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('ressources/textures/fontB.jpg')
-    o = Text('test', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
+    o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
     viewer.add_object(o)
     o.visible = False
+    
+    
+    o2 = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
+    viewer.add_object(o2)
+    o2.visible = False
 #===============================================================================
     viewer.run()
 
