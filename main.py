@@ -22,8 +22,7 @@ def main():
     m.apply_matrix(pyrr.matrix44.create_from_scale([2, 2, 2, 1]))
     tr = Transformation3D()
     tr.translation.y = -np.amin(m.vertices, axis=0)[1]
-    tr.translation.z = -5
-    tr.translation.x = -5
+    tr.translation.z = -3
     tr.rotation_center.z = 0.2
     texture = glutils.load_texture('ressources/textures/textured_output.jpg')
     o = Object3D(m.load_to_gpu(), m.get_nb_triangles(), program3d_id, texture, tr)
