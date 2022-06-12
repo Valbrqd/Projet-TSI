@@ -100,7 +100,7 @@ class ViewerGL:
 #===================================== Gestion collision et affichge texte ========================================
             d = pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.3]))
             bol = True
-            for i in range(4,len(self.objs)-7):
+            for i in range(5,len(self.objs)-7):
                 if abs(self.objs[0].transformation.translation.x + d[0] -self.objs[i].transformation.translation.x)<1.8 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[i].transformation.translation.z)<1.8 :
                     bol = False
             if bol :
