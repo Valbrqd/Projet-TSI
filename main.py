@@ -30,7 +30,7 @@ def main():
     viewer.add_object(o)
     
     
-#================================== Singe Suzanne ===============================           /!\ J'ai pas reussi à effectuer une rotation pour qu'elle regarde le centre de la pièce, nécessaire ?
+#================================== Singe Suzanne ===============================           
     m21 = Mesh.load_obj('ressources/objets/singe.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
@@ -83,12 +83,12 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
     
-    #====================================== Lou ======================================
+    #====================================== Loup ======================================
     m21 = Mesh.load_obj('ressources/objets/lou.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([1.5,1.5,1.5,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 2.5
+    tr21.translation.y = 2.8
     tr21.translation.z = 22.5
     tr21.translation.x = 15
     tr21.rotation_center.z = -0.2
@@ -140,7 +140,6 @@ def main():
     ms.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
     vaostand = ms.load_to_gpu()
     texture = glutils.load_texture('ressources/textures/BaseColor.png')
-
     for bcls in range(3):
         trs = Transformation3D()
         trs.translation.z = -22

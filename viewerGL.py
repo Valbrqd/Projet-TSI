@@ -34,7 +34,7 @@ class ViewerGL:
         # boucle d'affichage
         while not glfw.window_should_close(self.window):
             # nettoyage de la fenêtre : fond et profondeur
-            self.objs[5].transformation.rotation_euler[pyrr.euler.index().yaw] = -3
+            self.objs[5].transformation.rotation_euler[pyrr.euler.index().yaw] = -3.2
             GL.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT)
 
             self.update_key()
@@ -119,11 +119,35 @@ class ViewerGL:
                 self.objs[-2].visible = False
 #================================ Affichage Voiture ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[3].transformation.translation.z)<3 :
-                self.objs[-3].value = "Voiture"
+                self.objs[-3].value = "Voiture multiverse"
                 self.objs[-3].visible = True
             else :
                 self.objs[-3].visible = False
-
+#================================ Affichage Donut ==============================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[4].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[4].transformation.translation.z)<3 :
+                self.objs[-4].value = "Donut de Rodolphe"
+                self.objs[-4].visible = True
+            else :
+                self.objs[-4].visible = False
+#================================ Affichage Loup ==============================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[5].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[5].transformation.translation.z)<3 :
+                self.objs[-5].value = "Golden Wolf"
+                self.objs[-5].visible = True
+            else :
+                self.objs[-5].visible = False
+#================================ Affichage Dracaufeu ==============================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[6].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[6].transformation.translation.z)<3 :
+                self.objs[-6].value = "Dracaufeu 120PV"
+                self.objs[-6].visible = True
+            else :
+                self.objs[-6].visible = False
+#================================ Affichage Central ==============================================
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[7].transformation.translation.z)<3 :
+                self.objs[-7].value = "Central"
+                self.objs[-7].visible = True
+            else :
+                self.objs[-7].visible = False
+#=================================================================================================
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             d2= pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.1]))
             self.objs[0].transformation.translation -= d2
@@ -141,11 +165,35 @@ class ViewerGL:
                 self.objs[-2].visible = False
 
             if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[3].transformation.translation.z)<3 :
-                self.objs[-3].value = "Voiture"
+                self.objs[-3].value = "Voiture multiverse"
                 self.objs[-3].visible = True
             else :
                 self.objs[-3].visible = False
-#=================================================================================================================                
+            
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[4].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[4].transformation.translation.z)<3 :
+                self.objs[-4].value = "Donut de Rodolphe"
+                self.objs[-4].visible = True
+            else :
+                self.objs[-4].visible = False
+
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[5].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[5].transformation.translation.z)<3 :
+                self.objs[-5].value = "Golden Wolf"
+                self.objs[-5].visible = True
+            else :
+                self.objs[-5].visible = False
+
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[6].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[6].transformation.translation.z)<3 :
+                self.objs[-6].value = "Dracaufeu 120PV"
+                self.objs[-6].visible = True
+            else :
+                self.objs[-6].visible = False
+            
+            if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[7].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[7].transformation.translation.z)<3 :
+                self.objs[-7].value = "Central"
+                self.objs[-7].visible = True
+            else :
+                self.objs[-7].visible = False
+#====================================================================================================================================
         if glfw.KEY_LEFT in self.touch and self.touch[glfw.KEY_LEFT] > 0:
             self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] -= 0.1
         if glfw.KEY_RIGHT in self.touch and self.touch[glfw.KEY_RIGHT] > 0:
