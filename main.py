@@ -260,6 +260,10 @@ def main():
     o2 = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
     viewer.add_object(o2)
     o2.visible = False
+
+    o3 = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
+    viewer.add_object(o3)
+    o3.visible = False
 #===============================================================================
     viewer.run()
 

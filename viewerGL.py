@@ -118,10 +118,10 @@ class ViewerGL:
                 self.objs[-2].visible = False
 #================================ Affichage Voiture ==============================================
             if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[3].transformation.translation.z)<3 :
-                self.objs[-1].value = "Voiture"
-                self.objs[-1].visible = True
+                self.objs[-3].value = "Voiture"
+                self.objs[-3].visible = True
             else :
-                self.objs[-1].visible = False
+                self.objs[-3].visible = False
 
         if glfw.KEY_DOWN in self.touch and self.touch[glfw.KEY_DOWN] > 0:
             d2= pyrr.matrix33.apply_to_vector(pyrr.matrix33.create_from_eulers(self.objs[0].transformation.rotation_euler), pyrr.Vector3([0, 0, 0.1]))
@@ -132,6 +132,18 @@ class ViewerGL:
                 self.objs[-1].visible = True
             else :
                 self.objs[-1].visible = False
+                
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[2].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[2].transformation.translation.z)<3 :
+                self.objs[-2].value = "Stegosaurus"
+                self.objs[-2].visible = True
+            else :
+                self.objs[-2].visible = False
+
+            if abs(self.objs[0].transformation.translation.x + d[0] - self.objs[3].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d[2] -self.objs[3].transformation.translation.z)<3 :
+                self.objs[-3].value = "Voiture"
+                self.objs[-3].visible = True
+            else :
+                self.objs[-3].visible = False
 #=================================================================================================================                
         if glfw.KEY_LEFT in self.touch and self.touch[glfw.KEY_LEFT] > 0:
             self.objs[0].transformation.rotation_euler[pyrr.euler.index().yaw] -= 0.1
