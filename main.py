@@ -47,9 +47,9 @@ def main():
     #================================== Stegosaurus ===============================           
     m21 = Mesh.load_obj('ressources/objets/stegosaurus.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([2,2,2,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 2.6
+    tr21.translation.y = 3
     tr21.translation.z = -22.3
     tr21.translation.x = -15
     tr21.rotation_center.z = -0.2
@@ -74,7 +74,7 @@ def main():
     #===================================== Donut doré ===============================
     m21 = Mesh.load_obj('ressources/objets/donut.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.5,0.5,0.5,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([0.7,0.7,0.7,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 3.3
     tr21.translation.z = 22
@@ -101,9 +101,9 @@ def main():
 #====================================== naruto ======================================
     m21 = Mesh.load_obj('ressources/objets/naruto.obj')
     m21.normalize()
-    m21.apply_matrix(pyrr.matrix44.create_from_scale([1,1,1,1]))
+    m21.apply_matrix(pyrr.matrix44.create_from_scale([2,2,2,1]))
     tr21 = Transformation3D()
-    tr21.translation.y = 3
+    tr21.translation.y = 3.7
     tr21.translation.z = 22.5
     tr21.translation.x = -15
     tr21.rotation_center.z = -0.2
@@ -111,14 +111,14 @@ def main():
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
     
-#====================================== dragon ======================================
+#====================================== Dragon ======================================
     m21 = Mesh.load_obj('ressources/objets/dragon.obj')
     m21.normalize()
     m21.apply_matrix(pyrr.matrix44.create_from_scale([4,4,4,1]))
     tr21 = Transformation3D()
     tr21.translation.y = 2.7
     tr21.translation.z = 0
-    tr21.translation.x = 0
+    tr21.translation.x = 25
     tr21.rotation_center.z = -0.2
     texture = glutils.load_texture('ressources/textures/or.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
@@ -184,13 +184,7 @@ def main():
         os = Object3D(vaostand, m21.get_nb_triangles(), program3d_id, texture ,trs)
         os.transformation.translation.y = 1
         viewer.add_object(os)
-    trs = Transformation3D()
-    trs.translation.z = 0
-    trs.translation.x = 25
-    trs.rotation_center.z = 0.2
-    os = Object3D(vaostand, m21.get_nb_triangles(), program3d_id, texture ,trs)
-    os.transformation.translation.y = 1
-    viewer.add_object(os)
+    
 #================================ Cube mur ========================================
     #===== contour =====#
     m2 = Mesh.load_obj('ressources/objets/cube.obj')
@@ -299,15 +293,29 @@ def main():
             trbar.translation.x = 7.5 - 15*loop
             obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
             viewer.add_object(obar)
+         
+    for val in range(2):
+        trbar = Transformation3D()
+        trbar.translation.y = 0
+        trbar.translation.z = -0.6 +val
+        trbar.translation.x = 20
+        obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
+        viewer.add_object(obar)
+    
+    mbar2 = Mesh.load_obj('ressources/objets/cube.obj')
+    mbar2.normalize()
+    mbar2.apply_matrix(pyrr.matrix44.create_from_scale([2, 1.7, 0.1, 1]))
+    texturebar2 = glutils.load_texture('ressources/textures/barriere.jpg')
+    vaobar2 = mbar2.load_to_gpu()
 
-    # for loop in range(2):                    #/!\ Pour le stand central faitre un carré autour pour faire comme si c'etait une oeuvre ultra rare
-    #     for val in range(7):
-    #         trbar = Transformation3D()
-    #         trbar.translation.y = 0
-    #         trbar.translation.z = 27-val
-    #         trbar.translation.x = 7.5 - 15*loop
-    #         obar = Object3D(vaobar, mbar1.get_nb_triangles(), program3d_id, texturebar, trbar)
-    #         viewer.add_object(obar)
+    for loop in range(2):
+        for val in range(7):
+            trbar2 = Transformation3D()
+            trbar2.translation.y = 0
+            trbar2.translation.z = -2.5 + 5*loop
+            trbar2.translation.x = 22 +val
+            obar2 = Object3D(vaobar2, mbar2.get_nb_triangles(), program3d_id, texturebar2, trbar2)
+            viewer.add_object(obar2)
     
     
     
