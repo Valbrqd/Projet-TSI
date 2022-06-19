@@ -119,7 +119,7 @@ def main():
     tr21.translation.z = 0
     tr21.translation.x = 20
     tr21.rotation_center.z = -0.2
-    texture = glutils.load_texture('ressources/textures/trex.jpg')
+    texture = glutils.load_texture('ressources/textures/or.jpg')
     o21 = Object3D(m21.load_to_gpu(), m21.get_nb_triangles(), program3d_id, texture ,tr21)
     viewer.add_object(o21)
     
