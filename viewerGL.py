@@ -197,7 +197,7 @@ class ViewerGL:
                 self.objs[-5].visible = False
 
             if abs(self.objs[0].transformation.translation.x + d2[0] - self.objs[6].transformation.translation.x)<3 and abs(self.objs[0].transformation.translation.z + d2[2] -self.objs[6].transformation.translation.z)<3 :
-                self.objs[-6].value = "Dracaufeu 120PV"
+                self.objs[-6].value = "Naruto"
                 self.objs[-6].visible = True
             else :
                 self.objs[-6].visible = False

@@ -322,7 +322,7 @@ def main():
     vao = Text.initalize_geometry()
     texture = glutils.load_texture('ressources/textures/fontB.jpg')
 
-    for i in range(7):
+    for i in range(8):
         o = Text('', np.array([-0.8, 0.3], np.float32), np.array([0.8, 0.8], np.float32), vao, 2, programGUI_id, texture)
         viewer.add_object(o)
         o.visible = False
